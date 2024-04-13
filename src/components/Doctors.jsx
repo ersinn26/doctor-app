@@ -15,7 +15,7 @@ const Doctors = ({ setApps, apps }) => {
   }
   return (
     <Container>
-      <h3 className="display-6 mb-3" style={{ color: "rgb(166, 18, 189)" }}>
+      <h3 className="display-6 mb-3" style={{ color: "rgb(134,147,210)" }}>
         Our Doctors
       </h3>
       <Row>
@@ -39,6 +39,7 @@ const Doctors = ({ setApps, apps }) => {
         showModal={showModal}
         handleClose={() => setShow(false)}
         drName={drName}
+        addAppointment={addAppointment}
       ></AddModal>
     </Container>
   );

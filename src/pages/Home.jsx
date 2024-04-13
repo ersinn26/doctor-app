@@ -10,9 +10,9 @@ const[appointments,setAppointments]=useState(appointmentData)
 // console.log(appointments)
   return (
     <main className="text-center mt-2">
-      <h1 className="display-5 text-danger">CLARUS HOSPITAL</h1>
+      <h1 className="display-5 text-primary">HOSPITAL</h1>
       <Doctors setApps={setAppointments} apps={appointments} />
-      <AppointmentList />
+      <AppointmentList  setApps={setAppointments} apps={appointments}/>
     </main>
   )
 }

@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
-function Example({ showModal, handleClose, drName }) {
+function AddModal({ showModal, handleClose, drName, addAppointment }) {
   //   const [showModal, setShow] = useState(false);
 
   //   const handleClose = () => setShow(false);
@@ -14,7 +14,16 @@ function Example({ showModal, handleClose, drName }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+    addAppointment({
+      id: crypto.randomUUID(),
+      patient: patientName,
+      day: date,
+      consulted: false,
+      doctor: drName,
+    });
+    handleClose();
+    setPatientName("");
+    setDate("");
   };
 
   return (
@@ -25,7 +34,7 @@ function Example({ showModal, handleClose, drName }) {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="formBasicText">
               <Form.Label>Patient Name</Form.Label>
               <Form.Control
                 type="text"
@@ -44,19 +53,19 @@ function Example({ showModal, handleClose, drName }) {
                 value={date}
               />
             </Form.Group>
+            <div className="text-center">
+              <Button variant="success" type="submit" className="me-2">
+                Save
+              </Button>
+              <Button variant="danger" onClick={handleClose}>
+                Close
+              </Button>
+            </div>
           </Form>
         </Modal.Body>
-        <Modal.Footer className="text-center">
-          <Button variant="success" type="submit">
-            Save
-          </Button>
-          <Button variant="danger" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );
 }
 
-export default Example;
+export default AddModal;
